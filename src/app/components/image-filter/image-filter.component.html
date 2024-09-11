@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="container-info">
+    <img [src]="imagePath" alt="Logo">
+    <p>
+      Here you can view the photo gallery that exists thanks to the community. <br>
+      You will be able to search for images according to their category and see details of each one.<br>
+      You will be able to mark as favorites those that you have liked the most.
+    </p>
+  </div>
+
+  <div class="categories-container">
+    <p>Select a category:</p>
+
+    <!-- Menú desplegable para seleccionar la categoría -->
+    <select (change)="selectCategory($event)">
+      <option value="All Categories">All Categories</option>
+      <option value="Asia">Asia</option>
+      <option value="Africa">Africa</option>
+      <option value="America">America</option>
+      <option value="Europe">Europe</option>
+      <option value="Oceania">Oceania</option>
+      <option value="Favorites">Favorites</option>
+    </select>
+  </div>
+
+</div>
+

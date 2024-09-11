@@ -1,0 +1,17 @@
+<div *ngFor="let image of images" class="card">
+  <h2>{{ image.title }}</h2>
+  <button (click)="toggleFavorite(image)" id="icon-favorite"
+      [ngStyle]="{'color': image.favorite ? 'gold' : '#a0a0a079'}"
+      class="favorite-button">
+    <i class="fa-solid fa-star"></i>
+  </button>
+  <img [src]="image.url" [alt]="image.title">
+
+  <div class="info-image">
+    <p>{{ image.description }}</p>
+    <button class="button-details" (click)="openModal(image)">More details</button>
+  </div>
+</div>
+
+<app-image-details [isVisible]="isModalVisible" [image]="selectedImage" (close)="closeModal()"></app-image-details>
+
