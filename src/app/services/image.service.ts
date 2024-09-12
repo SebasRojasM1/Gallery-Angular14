@@ -24,6 +24,8 @@ export class ImageService {
     { id: 15, url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPDxPJ83xAWp7lvnYcMN_QMyknm0qegfqaYQ&s', title: 'Amsterdam, The Netherlands', description: 'Capital of the Netherlands, famous for its canals, bicycles and art museums.', longDescription: 'Amsterdam, known as the “Venice of the North”, is a charming city with more than 100 kilometers of canals and hundreds of bridges. Famous for its relaxed atmosphere and bicycle-oriented lifestyle, it is a cultural center with world-renowned museums such as the Rijksmuseum and the Van Gogh Museum. Amsterdam also offers a vibrant nightlife, rich history and unique architecture, from 17th century houses to modern sustainable buildings, making it an unforgettable European destination.', category: 'Europe', date: '2024-09-07', favorite: false }
   ];
   
+  private favorites: Image[] = []; // Nueva propiedad para almacenar las imágenes favoritas
+
   private selectedCategory: string = 'All Categories';
 
   getImages(): Image[] {
@@ -35,7 +37,7 @@ export class ImageService {
       return this.imagesData;
     }
     if (this.selectedCategory === 'Favorites') {
-      return this.imagesData.filter(image => image.favorite);
+      return this.favorites; // Devuelve solo las imágenes favoritas
     }
     return this.imagesData.filter(image => image.category === this.selectedCategory);
   }
@@ -44,7 +46,24 @@ export class ImageService {
     const image = this.imagesData.find(img => img.id === id);
     if (image) {
       image.favorite = isFavorite;
+      if (isFavorite) {
+        this.addFavorite(image);
+      } else {
+        this.removeFavorite(image);
+      }
     }
+  }
+
+  // Método para agregar una imagen a la lista de favoritos
+  private addFavorite(image: Image): void {
+    if (!this.favorites.includes(image)) {
+      this.favorites.push(image);
+    }
+  }
+
+  // Método para remover una imagen de la lista de favoritos
+  private removeFavorite(image: Image): void {
+    this.favorites = this.favorites.filter(img => img.id !== image.id);
   }
 
   setCategory(category: string): void {
@@ -54,8 +73,8 @@ export class ImageService {
   getCategory(): string {
     return this.selectedCategory;
   }
-  
+
   getFavoriteImages(): Image[] {
-    return this.imagesData.filter(img => img.favorite);
+    return this.favorites;
   }
 }

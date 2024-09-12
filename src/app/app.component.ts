@@ -12,17 +12,20 @@ export class AppComponent {
   title = 'gallery';
   images: Image[] = [];
   filteredImages: Image[] = [];
+  favoriteImages: Image[] = [];
+
 
   constructor(private imageService: ImageService) {
     this.images = this.imageService.getImages();
     this.filteredImages = this.images; // Inicialmente mostramos todas las imágenes
+    this.updateFavorites();
   }
 
   onCategorySelected(category: string): void {
     if (category === 'All Categories') {
       this.filteredImages = this.images;
     } else if (category === 'Favorites') {
-      this.filteredImages = this.images.filter(image => image.favorite);
+      this.filteredImages = this.imageService.getFavoriteImages();
     } else {
       this.filteredImages = this.images.filter(image => image.category === category);
     }
@@ -32,5 +35,10 @@ export class AppComponent {
     const newFavoriteStatus = !image.favorite;
     this.imageService.updateFavorite(image.id, newFavoriteStatus);
     image.favorite = newFavoriteStatus;
+    this.updateFavorites(); // Actualizar la lista de favoritos después de cambiar
+  }
+
+  updateFavorites(): void {
+    this.favoriteImages = this.imageService.getFavoriteImages();
   }
 }

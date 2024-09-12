@@ -1,7 +1,17 @@
-<div>
-  <p>Tienes imágenes favoritas</p>
+<div class="favorites-gallery">
+  <div *ngFor="let image of favoriteImages" class="card">
+    <h2>{{ image.title }}</h2>
+    <button id="icon-favorite"
+      [ngStyle]="{'color': 'gold'}"
+      class="favorite-button">
+      <i class="fa-solid fa-star"></i>
+    </button>
+    <img [src]="image.url" [alt]="image.title">
+
+    <div class="info-image">
+      <p>{{ image.description }}</p>
+    </div>
+  </div>
 </div>
 
-<ng-template>
-  <p>No tienes imágenes favoritas.</p>
-</ng-template>
+
