@@ -12,12 +12,12 @@
   
     <div class="info-image">
       <p>{{ image.description }}</p>
-      <button class="button-details" >More details</button>
+      <button class="button-details" (click)="openModal(image)">More details</button>
     </div>
   </div>
 </section>
 
 
-<!-- <app-image-details [isVisible]="isModalVisible" [image]="selectedImage" (close)="closeModal()"></app-image-details> -->
+<app-image-details [isVisible]="isModalVisible" [image]="selectedImage" (close)="closeModal()"></app-image-details>
 
 
