@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Image } from './models/image.model';
 import { ImageService } from './services/image.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +14,24 @@ export class AppComponent {
   images: Image[] = [];
   filteredImages: Image[] = [];
   favoriteImages: Image[] = [];
+  currentRoute: string = '';
 
 
-  constructor(private imageService: ImageService) {
+  constructor(private imageService: ImageService, private router: Router) {
     this.images = this.imageService.getImages();
     this.filteredImages = this.images; // Inicialmente mostramos todas las imágenes
     this.updateFavorites();
+  }
+
+  ngOnInit(): void {
+    this.currentRoute = this.router.url;
+
+    // Suscríbete a los eventos de navegación para actualizar la ruta
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = this.router.url;
+      }
+    });
   }
 
   onCategorySelected(category: string): void {

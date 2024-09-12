@@ -2,8 +2,9 @@
   <div class="aside">
     <app-image-filter></app-image-filter>
 
-    <div class="number-favorites">
-      <a routerLink="/favorites">View Favorites</a>
+    <div class="interaction-pages">
+      <a *ngIf="currentRoute === '/' " routerLink="/favorites">View Favorites</a>
+      <a *ngIf="currentRoute === '/favorites'" routerLink="/">Go to Home</a>
     </div>
     
   </div>
