@@ -1,17 +1,23 @@
-<div class="favorites-gallery">
+
+
+<section class="favorites-section">
   <div *ngFor="let image of favoriteImages" class="card">
     <h2>{{ image.title }}</h2>
     <button id="icon-favorite"
-      [ngStyle]="{'color': 'gold'}"
-      class="favorite-button">
+        [ngStyle]="{'color': image.favorite ? 'gold' : '#a0a0a079'}"
+        class="favorite-button">
       <i class="fa-solid fa-star"></i>
     </button>
     <img [src]="image.url" [alt]="image.title">
-
+  
     <div class="info-image">
       <p>{{ image.description }}</p>
+      <button class="button-details" >More details</button>
     </div>
   </div>
-</div>
+</section>
+
+
+<!-- <app-image-details [isVisible]="isModalVisible" [image]="selectedImage" (close)="closeModal()"></app-image-details> -->
 
 

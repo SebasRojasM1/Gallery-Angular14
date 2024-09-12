@@ -1,67 +1,78 @@
 
-
-.card{
+.container-gallery{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  flex-direction: column;
-  box-shadow: 0px 2px 5px 2px rgba(175, 175, 175, 0.616);
-  border-radius: 9px;
-  min-width: 100px;
-  padding: 10px;
-  margin: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 80%;
+    height: 100%;
+    scroll-behavior: smooth;
+    margin-left: 300px; 
+    margin-top: 20px;  
 
-  h2{
-    color: #c58b5e;
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: bold;
-    font-size: 16px;
-    width: 170px
-  }
-
-  #icon-favorite{
-    position: relative;
-    transition: 0.3s;
-    top: -27px;
-    margin: 0;
-    padding: 0;
-    left: 90px;
-  }
-
-  img{
-    width: 210px;
-    margin: 10px 0;
-  }
-
-  .info-image{
+  .card{
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
     flex-direction: column;
-    width: 200px;
-
-    p{
-      font-size: 13px;
-      text-align: center;
-    }
-    .button-details{
-      margin: 10px 0;
-      background-color: #c58b5e;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.4s;
+    box-shadow: 0px 2px 5px 2px rgba(175, 175, 175, 0.616);
+    border-radius: 9px;
+    min-width: 100px;
+    padding: 10px;
+    margin: 10px;
   
-      &:hover{
-        background-color: #a36745;
+    h2{
+      color: #c58b5e;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+      width: 170px
+    }
+  
+    #icon-favorite{
+      position: relative;
+      transition: 0.3s;
+      top: -27px;
+      margin: 0;
+      padding: 0;
+      left: 90px;
+    }
+  
+    img{
+      width: 210px;
+      margin: 10px 0;
+    }
+  
+    .info-image{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 200px;
+  
+      p{
+        font-size: 13px;
+        text-align: center;
+      }
+      .button-details{
+        margin: 10px 0;
+        background-color: #c58b5e;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
         transition: 0.4s;
+    
+        &:hover{
+          background-color: #a36745;
+          transition: 0.4s;
+        }
       }
     }
+    
   }
-  
 }

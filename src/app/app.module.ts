@@ -8,7 +8,7 @@ import { ImageFilterComponent } from './components/image-filter/image-filter.com
 import { ImageService } from './services/image.service';
 import { CommonModule } from '@angular/common';
 import { ImageDetailsComponent } from './components/image-details/image-details.component';
-import { FavoritePageComponent } from './favorite-page/favorite-page.component';
+import { FavoritePageComponent } from './pages/favorite-page/favorite-page.component';
 
 @NgModule({
   declarations: [
