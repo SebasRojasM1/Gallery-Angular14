@@ -2,14 +2,14 @@
   <div class="aside">
     <app-image-filter></app-image-filter>
 
-    <div class="number-favorites"></div>
-      <app-favorite-images></app-favorite-images>
+    <div class="interaction-pages">
+      <a *ngIf="currentRoute === '/' " routerLink="/favorites">View Favorites</a>
+      <a *ngIf="currentRoute === '/favorites'" routerLink="/">Go to Home</a>
     </div>
     
+  </div>
 
-    <div class="container-gallery">
-      <app-image-gallery style="display: flex; justify-content: space-evenly; flex-wrap: wrap;"></app-image-gallery>
-    </div>
+  <div >
+    <router-outlet></router-outlet>
+  </div>
 </div>
-
-

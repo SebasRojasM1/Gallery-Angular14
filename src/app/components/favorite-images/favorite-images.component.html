@@ -1,7 +1,21 @@
-<div>
-  <p>Tienes imágenes favoritas</p>
-</div>
+<section class="favorites-section">
+  <div *ngFor="let image of favoriteImages" class="card">
+    <h2>{{ image.title }}</h2>
+    <button id="icon-favorite"
+        [ngStyle]="{'color': image.favorite ? 'gold' : '#a0a0a079'}"
+        class="favorite-button">
+      <i class="fa-solid fa-star"></i>
+    </button>
+    <img [src]="image.url" [alt]="image.title">
+  
+    <div class="info-image">
+      <p>{{ image.description }}</p>
+      <button class="button-details" (click)="openModal(image)">More details</button>
+    </div>
+  </div>
+</section>
 
-<ng-template>
-  <p>No tienes imágenes favoritas.</p>
-</ng-template>
+
+<app-image-details [isVisible]="isModalVisible" [image]="selectedImage" (close)="closeModal()"></app-image-details>
+
+
